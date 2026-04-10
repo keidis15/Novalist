@@ -1,0 +1,25 @@
+const express = require("express");
+const cors = require("cors");
+const pool = require("./dataBase/db");
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+//ruta de prueba
+app.get("/test-db", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    res.json({
+      message: "Conectado a Neon con exito",
+      time: result.row[0],
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor Novalist corriendo en puerto ${PORT}`);
+});
