@@ -58,7 +58,7 @@ novaList/
 
 ## Instalación y Configuración Local
 1. Clonar el repositorio
-git clone [https://github.com/tu-usuario/novaList.git](https://github.com/tu-usuario/novaList.git)
+git clone [[https://github.com/tu-usuario/novaList.git](https://github.com/keidis15/Novalist)]
 cd novaList
 
 2. Configurar el Backend (server)
@@ -67,7 +67,7 @@ npm install
 
 - Crea un archivo .env dentro de la carpeta server con las siguientes variables:
 PORT=3000
-DATABASE_URL=postgres://tu_usuario:tu_password@tu_host.neon.tech/neondb?sslmode=require
+DATABASE_URL=postgres://tu_usuario:tu_password
 JWT_SECRET=tu_clave_secreta_super_segura
 
 - Inicia el servidor en modo desarrollo:
