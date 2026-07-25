@@ -7,12 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 //ruta de prueba
-app.get("/test-db", async (req, res) => {
+app.get("/api/test-db", async (req, res) => {
   try {
     const result = await pool.query("SELECT NOW()");
     res.json({
       message: "Conectado a Neon con exito",
-      time: result.row[0],
+      serverTime: result.rows[0].now
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -1,0 +1,30 @@
+.planificador-container {
+    min-height: 100vh;
+}
+
+.tarea-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, shadow 0.2s ease;
+}
+
+.tarea-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+/* Scroll sutil para móviles */
+@media (max-width: 991px) {
+    .row {
+        overflow-x: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+    }
+    .col-12 {
+        min-width: 280px;
+    }
+}

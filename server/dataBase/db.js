@@ -1,5 +1,8 @@
-const { Pool } = require("pg");
-require("dotenv").config();
+import { Pool } from "pg";
+import dotenv from "dotenv";
+
+// Cargar las variables del archivo .env
+dotenv.config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -8,4 +11,13 @@ const pool = new Pool({
   },
 });
 
-module.export = pool;
+pool.connect()
+  .then((client) => {
+    console.log("✅ Conectado exitosamente a la base de datos Neon (PostgreSQL)");
+    client.release();
+  })
+  .catch((err) => {
+    console.error("❌ Error al conectar con Neon:", err.message);
+  });
+
+export default pool;

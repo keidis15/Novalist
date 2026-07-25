@@ -1,0 +1,27 @@
+.nota-card {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.nota-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.shadow-xs {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 0.75rem;
+}
+
+/* Para los iconos si usas Bootstrap Icons */
+.bi {
+    vertical-align: middle;
+}
+
+/* Efecto para que el texto largo no rompa el diseño */
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

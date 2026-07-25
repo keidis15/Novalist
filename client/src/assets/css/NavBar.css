@@ -1,0 +1,18 @@
+.navbar-custom {
+ color: var(--nova-dark);
+
+}
+
+/* Botones con tu color de marca */
+li .btn-nova {
+  background-color: var(--nova-accent);
+  color: white;
+  border: none;
+}
+
+li .btn-nova:hover {
+  background-color: #e67600; /* Un naranja un poco más oscuro para el hover */
+}
+nav .nav-link{
+  color: var(--nova-dark);
+}

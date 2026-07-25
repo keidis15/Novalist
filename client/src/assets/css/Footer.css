@@ -1,0 +1,16 @@
+/* Estilo para la línea divisoria vertical */
+@media (min-width: 992px) {
+  .border-end-lg {
+    border-right: 1px solid #dee2e6 !important;
+  }
+}
+
+.x-small {
+    font-size: 0.75rem;
+}
+
+/* Efecto hover suave para los links */
+footer a:hover {
+    color: #FB8500 !important; /* Tu Tiger Orange */
+    transition: color 0.3s ease;
+}

@@ -1,0 +1,22 @@
+.perfil-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-control:focus {
+    box-shadow: none;
+    background-color: #f1f5f9 !important;
+    border: 1px solid #219EBC !important;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
