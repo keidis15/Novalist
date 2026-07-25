@@ -58,7 +58,7 @@ novaList/
 
 ## Instalación y Configuración Local
 1. Clonar el repositorio
-git clone [[https://github.com/tu-usuario/novaList.git](https://github.com/keidis15/Novalist)]
+git clone [](https://github.com/keidis15/Novalist)]
 cd novaList
 
 2. Configurar el Backend (server)
