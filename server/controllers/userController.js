@@ -21,23 +21,28 @@ const register = async (req, res) => {
   }
 };
 
-//ruta de verificacion si el token es valido
+// Ruta de verificación si el token es válido
 const getUserProfile = async (req, res) => {
   try {
-    const userFound = await User.findById(req.user.id).select("-password");
-    if (!userFound) return res.status(404).json({ message: "No encontrado" });
+    // Buscamos el usuario en PostgreSQL usando el ID desglosado por el middleware (req.user.id)
+    const userFound = await User.findById(req.user.id);
 
-    // ESTE ES EL PAYLOAD COMPLETO
+    if (!userFound) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    // Devolvemos el payload limpio para el Perfil.jsx
     return res.json({
-      id: userFound._id,
+      id: userFound.id,
       username: userFound.username,
       email: userFound.email,
       role: userFound.role || "Usuario",
-      avatar: userFound.avatar,
-      joined: userFound.createdAt, // Lo que pide tu Perfil.jsx
+      avatar: userFound.avatar || null,
+      joined: userFound.created_at || userFound.createdAt, // PostgreSQL suele usar created_at
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error en getUserProfile:", error);
+    res.status(500).json({ message: "Error interno al obtener el perfil" });
   }
 };
 
@@ -60,8 +65,18 @@ const login = async (req, res) => {
       expiresIn: "24h",
     });
 
-    res.json({ message: "Login exitoso", token, username: user.username });
+    // Devolvemos el token y un objeto user con la estructura correcta
+    res.json({
+      message: "Login exitoso",
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (error) {
+    console.error("Error en login:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
 };

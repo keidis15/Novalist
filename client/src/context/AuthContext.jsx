@@ -18,17 +18,20 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const token = localStorage.getItem("token");
+      console.log("Token desde localStorage:", token); // Para depuración
+      
       if (!token) return setLoading(false);
 
       try {
         // Al usar 'client', el interceptor que ya creaste inyecta el token
         const res = await client.get("/api/users/verify");
-
         // IMPORTANTE: Verifica qué trae 'res.data'
         if (res.data) {
-          setUser(res.data); // Aquí 'user' dejará de ser null
+          setUser(res.data.user || res.data); // Aquí 'user' dejará de ser null
           setIsAuthenticated(true);
+          
         }
+        
       } catch (error) {
         console.error("Error validando sesión:", error);
         logout(); // Si el token no sirve, limpiamos todo
@@ -46,7 +49,7 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
-
+      console.log("Respuesta del servidor:", data); // Para depuración
       // Guardamos en persistencia y en estado global
       localStorage.setItem("token", data.token);
       setToken(data.token); // <--- Ahora es global

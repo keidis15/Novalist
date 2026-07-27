@@ -11,7 +11,7 @@ import Inventario from "./components/Inventario";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Perfil from "./views/Perfil";
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
@@ -23,12 +23,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          
           <Route path="/planificador" element={<Planificador />} />
           <Route path="/note" element={<Notas />} />
           <Route path="/finance" element={<Finanzas />} />
           <Route path="/inventario" element={<Inventario />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Perfil />} />
         </Routes>
       </div>
